@@ -1,0 +1,65 @@
+.bd-root {
+  position: fixed; inset: 0;
+  background: #07090a;
+  color: #d9d2c2;
+  font-family: 'Courier Prime', 'IBM Plex Mono', 'Menlo', 'Courier New', monospace;
+  overflow: hidden;
+
+  // Platform crops 13% on each horizontal edge — UI stays inside the
+  // central 74% safe area. Hero img / video stay full-width (edges = fill).
+  --safe-x: 13vw;
+}
+
+.bd-stage {
+  position: relative; width: 100%; height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bd-hero {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none;
+  z-index: 1;
+  animation: bd-hero-fade 0.9s ease-out;
+}
+@keyframes bd-hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// To-be-continued panel
+.bd-tbc {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: rgba(7, 9, 10, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier Prime', 'IBM Plex Mono', 'Menlo', monospace;
+  color: rgba(217, 210, 194, 0.92);
+  pointer-events: none;
+  animation: bd-tbc-in 0.8s ease-out;
+  &__inner { max-width: 560px; padding: 36px 28px; text-align: left; }
+  &__title {
+    font-size: 22px; letter-spacing: 0.28em; text-transform: lowercase;
+    color: rgba(245, 230, 200, 0.95);
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  &__body {
+    font-size: 15px; line-height: 1.55; letter-spacing: 0.03em;
+    color: rgba(217, 210, 194, 0.88);
+    margin-bottom: 22px;
+  }
+  &__note {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(245, 230, 200, 0.4);
+    text-align: center;
+  }
+}
+@keyframes bd-tbc-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
